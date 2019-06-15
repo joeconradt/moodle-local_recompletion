@@ -15,17 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
+ * Service definitions.
  *
  * @package    local_recompletion
- * @copyright  2017 Dan Marsden
+ * @copyright  2019 Joseph Conradt
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2019061400;
-$plugin->release   = '1.8';
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->requires  = 2017111302; // Requires 3.4.
-$plugin->component = 'local_recompletion';
+$functions = [
+    'local_recompletion_reset_user' => array(
+        'classname'    => 'local_recompletion\external',
+        'methodname'   => 'reset_user',
+        'classpath'    => '',
+        'description'  => 'Reset user completion.',
+        'type'         => 'write',
+        'capabilities' => ''
+    )
+];

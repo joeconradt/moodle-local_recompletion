@@ -27,6 +27,13 @@ namespace local_recompletion\task;
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot . '/course/lib.php');
+require_once($CFG->dirroot . '/local/recompletion/locallib.php');
+require_once($CFG->libdir . '/completionlib.php');
+require_once($CFG->libdir.'/gradelib.php');
+require_once($CFG->dirroot . '/mod/assign/locallib.php');
+require_once($CFG->dirroot . '/mod/quiz/lib.php');
+
 /**
  * Check for users that need to recomplete.
  *
@@ -48,13 +55,7 @@ class check_recompletion extends \core\task\scheduled_task {
      * Execute task.
      */
     public function execute() {
-        global $CFG, $DB;
-        require_once($CFG->dirroot . '/course/lib.php');
-        require_once($CFG->dirroot . '/local/recompletion/locallib.php');
-        require_once($CFG->libdir . '/completionlib.php');
-        require_once($CFG->libdir.'/gradelib.php');
-        require_once($CFG->dirroot . '/mod/assign/locallib.php');
-        require_once($CFG->dirroot . '/mod/quiz/lib.php');
+        global $DB;
 
         if (!\completion_info::is_enabled_for_site()) {
             return;
